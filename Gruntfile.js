@@ -15,6 +15,7 @@ module.exports = function(grunt) {
     jshint: {
       src: ['src/**/*.js'],
       options: {
+        "reporterOutput": "",
         "globals"     : { "Phaser": false, "PIXI": false, "p2": false },
         // Ignore Environment Globals
         "browser"     : true,   // Standard browser globals e.g. `window`, `document`.

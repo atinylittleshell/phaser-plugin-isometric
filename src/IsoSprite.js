@@ -114,16 +114,16 @@ Phaser.Plugin.Isometric.IsoSprite.prototype.resetIsoBounds = function () {
         this._isoBounds = new Phaser.Plugin.Isometric.Cube();
     }
 
-    var asx = Math.abs(this.scale.x);
-    var asy = Math.abs(this.scale.y);
+    // Math.cos(Math.atan(0.5))
+    var factor = 0.898;
+    this._isoBounds.widthX = Math.round(Math.abs(this.width) * 0.5 / factor);
+    this._isoBounds.widthY = Math.round(Math.abs(this.width) * 0.5 / factor);
+    this._isoBounds.height =
+        Math.round(Math.abs(this.height) - (Math.abs(this.width) * 0.5) / factor);
 
-    this._isoBounds.widthX = Math.round(Math.abs(this.width) * 0.5) * asx;
-    this._isoBounds.widthY = Math.round(Math.abs(this.width) * 0.5) * asx;
-    this._isoBounds.height = Math.round(Math.abs(this.height) - (Math.abs(this.width) * 0.5)) * asy;
-
-    this._isoBounds.x = this.isoX + (this._isoBounds.widthX * -this.anchor.x) + this._isoBounds.widthX * 0.5;
-    this._isoBounds.y = this.isoY + (this._isoBounds.widthY * this.anchor.x) - this._isoBounds.widthY * 0.5;
-    this._isoBounds.z = this.isoZ - (Math.abs(this.height) * (1 - this.anchor.y)) + (Math.abs(this.width * 0.5));
+    this._isoBounds.x = this.isoX;
+    this._isoBounds.y = this.isoY;
+    this._isoBounds.z = this.isoZ;
 
     return this._isoBounds;
 };
@@ -202,7 +202,7 @@ Object.defineProperty(Phaser.Plugin.Isometric.IsoSprite.prototype, "isoPosition"
  * A Cube object representing the derived boundsof the IsoSprite.
  *
  * @name Phaser.Plugin.Isometric.IsoSprite#isoBounds
- * @property {Point3} isoBounds - The derived 3D bounds of the IsoSprite.
+ * @property {Cube} isoBounds - The derived 3D bounds of the IsoSprite.
  * @readonly
  */
 Object.defineProperty(Phaser.Plugin.Isometric.IsoSprite.prototype, "isoBounds", {

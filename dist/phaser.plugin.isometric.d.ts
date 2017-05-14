@@ -113,7 +113,7 @@ declare module Phaser.Plugin {
             isoY: number;
             isoZ: number;
             isoPosition: Phaser.Plugin.Isometric.Point3;
-            isoBounds: Phaser.Plugin.Isometric.Point3;
+            isoBounds: Phaser.Plugin.Isometric.Cube;
             depth: number;
 
             constructor(game: Phaser.Game, x: number, y: number, z: number, key?: any, frame?: any);
